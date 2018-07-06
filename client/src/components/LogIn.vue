@@ -1,13 +1,12 @@
 
 <template>
  <v-app id="inspire">
-    
-      <v-container fluid>
+      <v-container fluid fill-height>
         <v-layout align-center justify-center>
           <v-flex xs12 sm8 md4>
             <v-card class="elevation-12">
               <v-toolbar color="cyan darken-1">
-                <v-toolbar-title justify-center>Вход</v-toolbar-title>                        
+                <v-toolbar-title justify-center>Регистрация</v-toolbar-title>                        
               </v-toolbar>
               <v-card-text>
                 <v-form>
@@ -20,7 +19,7 @@
               </v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn color="primary" @click="register" class="mb-3">Регистрация</v-btn>
+                <v-btn color="primary" @click="login" class="mb-3">Войти</v-btn>
                 <v-spacer></v-spacer>
               </v-card-actions>
             </v-card>
@@ -43,9 +42,9 @@ export default {
     };
   },
   methods: {
-    async register() {
+    async login() {
       try{
-        const response = await AuthenticationService.register({
+        const response = await AuthenticationService.login({
         email: this.email,
         password: this.password
       });
