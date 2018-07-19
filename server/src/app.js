@@ -14,7 +14,7 @@ app.use(cors());
 
 require('./routers')(app)
 
-sequelize.sync({force: true})
+sequelize.sync()
 	.then(() => {
 		app.listen(config.port);
 		console.log(`Сервер запущен на пору ${config.port}`)
