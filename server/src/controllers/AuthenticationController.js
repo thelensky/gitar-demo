@@ -11,7 +11,6 @@ function jwtSignUser (user) {
 
 module.exports = {
   async register (req, res) {
-    console.log('User ===>', User)
     try {const {email, password} = req.body
       const user = await User.create({email: email, password: password})
       const userJson = user.toJSON()
@@ -20,7 +19,6 @@ module.exports = {
         token: jwtSignUser(userJson)
       })
     } catch (err) {
-      console.log('ERROR =>=>>>>>', err)
       res.status(400).send({
         error: 'This email account is already in use.'
       })
@@ -42,7 +40,6 @@ module.exports = {
       }
 
       const isPasswordValid = await user.comparePassword(password)
-      console.log('isPasswordValid =====>', isPasswordValid)
 
       if (!isPasswordValid) {
         return res.status(403).send({
